@@ -1,5 +1,6 @@
 package com.codewithmosh.store.mappers;
 
+import com.codewithmosh.store.dtos.LoginRequest;
 import com.codewithmosh.store.dtos.RegisterUserRequest;
 import com.codewithmosh.store.dtos.UpdateUserRequest;
 import com.codewithmosh.store.dtos.UserDto;
@@ -13,4 +14,5 @@ public interface UserMapper {
     UserDto toUserDto(User user);
     User toEntity(RegisterUserRequest request);
     void updateUser(UpdateUserRequest request,@MappingTarget User user);
+    User toUser(LoginRequest request);
 }
