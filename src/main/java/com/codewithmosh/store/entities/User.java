@@ -64,4 +64,5 @@ public class User {
                 "name = " + name + ", " +
                 "email = " + email + ")";
     }
+
 }
