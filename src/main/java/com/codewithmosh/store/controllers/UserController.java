@@ -1,6 +1,7 @@
 package com.codewithmosh.store.controllers;
 
 import com.codewithmosh.store.dtos.*;
+import com.codewithmosh.store.entities.Role;
 import com.codewithmosh.store.mappers.UserMapper;
 import com.codewithmosh.store.repositories.UserRepository;
 import jakarta.validation.Valid;
@@ -51,6 +52,7 @@ public class UserController {
         if(userRepository.existsByEmail(request.getEmail()))
             return ResponseEntity.badRequest().body(Map.of("email" , "email already in use" ));
         user.setPassword(passwordEncoder.encode(user.getPassword()));
+        user.setRole(Role.USER);
         userRepository.save(user);
         var userdto = userMapper.toUserDto(user);
         var uri = uriBuidler.path("/users/{id}").buildAndExpand(userdto.getId()).toUri();
